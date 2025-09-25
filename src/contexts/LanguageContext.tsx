@@ -8,13 +8,13 @@ export interface Language {
 
 export const languages: Language[] = [
   { code: "en", name: "English", nativeName: "English" },
+  { code: "od", name: "Odia", nativeName: "ଓଡ଼ିଆ" },
   { code: "hi", name: "Hindi", nativeName: "हिंदी" },
   { code: "bn", name: "Bengali", nativeName: "বাংলা" },
-  { code: "od", name: "Odia", nativeName: "ଓଡ଼ିଆ" },
   { code: "kn", name: "Kannada", nativeName: "ಕನ್ನಡ" },
   { code: "mr", name: "Marathi", nativeName: "मराठी" },
   { code: "te", name: "Telugu", nativeName: "తెలుగు" },
-  { code: "ta", name: "Tamil", nativeName: "தமிழ்" },
+  { code: "ta", name: "Tamil", nativeName: "তমিழ" },
 ];
 
 interface LanguageContextType {
@@ -41,7 +41,7 @@ const translations: Translations = {
     checkups: "Checkups",
     
     // Hero Section
-    appName: "SwasthyaAI",
+    appName: "ODIA SWASTHYA SEVA",
     tagline: "Your Health Assistant",
     heroTitle: "AI-powered multilingual health assistant for personalized healthcare guidance, doctor consultations, and medicine delivery across India.",
     startHealthChat: "Start Health Chat",
@@ -77,7 +77,7 @@ const translations: Translations = {
     checkups: "जांच",
     
     // Hero Section
-    appName: "स्वास्थ्यAI",
+    appName: "ଓଡିଆ ସ୍ୱାସ୍ଥ୍ୟ ସେବା",
     tagline: "आपका स्वास्थ्य सहायक",
     heroTitle: "व्यक्तिगत स्वास्थ्य मार्गदर्शन, डॉक्टर परामर्श और भारत भर में दवा वितरण के लिए AI-संचालित बहुभाषी स्वास्थ्य सहायक।",
     startHealthChat: "स्वास्थ्य चैट शुरू करें",
@@ -113,7 +113,7 @@ const translations: Translations = {
     checkups: "চেকআপ",
     
     // Hero Section
-    appName: "স্বাস্থ্যAI",
+    appName: "ଓଡିଆ ସ୍ୱାସ୍ଥ୍ୟ ସେବା",
     tagline: "আপনার স্বাস্থ্য সহায়ক",
     heroTitle: "ব্যক্তিগত স্বাস্থ্যসেবা নির্দেশনা, ডাক্তার পরামর্শ এবং ভারত জুড়ে ওষুধ সরবরাহের জন্য AI-চালিত বহুভাষিক স্বাস্থ্য সহায়ক।",
     startHealthChat: "স্বাস্থ্য চ্যাট শুরু করুন",

@@ -11,7 +11,9 @@ import {
   TrendingUp,
   AlertCircle,
   CheckCircle,
-  Clock
+  Clock,
+  Shield,
+  Syringe
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -48,6 +50,33 @@ const Dashboard = () => {
     { test: "Complete Blood Count", date: "2024-01-10", status: "Normal" },
     { test: "Lipid Profile", date: "2024-01-08", status: "Review Required" },
     { test: "Thyroid Function", date: "2024-01-05", status: "Normal" },
+  ];
+
+  const vaccinationChecklist = [
+    { 
+      vaccine: "COVID-19 Booster", 
+      dueDate: "2024-02-01", 
+      status: "due", 
+      description: "Annual COVID-19 vaccination"
+    },
+    { 
+      vaccine: "Influenza", 
+      dueDate: "2024-01-20", 
+      status: "overdue", 
+      description: "Seasonal flu vaccination"
+    },
+    { 
+      vaccine: "Hepatitis B", 
+      dueDate: "2024-06-15", 
+      status: "completed", 
+      description: "3-dose series completed"
+    },
+    { 
+      vaccine: "Tetanus", 
+      dueDate: "2026-03-10", 
+      status: "upcoming", 
+      description: "10-year booster"
+    },
   ];
 
   return (
@@ -153,8 +182,50 @@ const Dashboard = () => {
           </CardContent>
         </Card>
 
+        {/* Vaccination Checklist */}
+        <Card className="health-card">
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <Shield className="h-5 w-5 text-primary" />
+              <span>Vaccination Checklist</span>
+            </CardTitle>
+            <CardDescription>Stay protected with timely vaccinations</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {vaccinationChecklist.map((vaccine, index) => (
+                <div key={index} className="flex items-center justify-between p-3 rounded-lg border border-border">
+                  <div className="flex items-center space-x-3">
+                    <Syringe className="h-4 w-4 text-secondary" />
+                    <div>
+                      <h4 className="font-semibold text-card-foreground">{vaccine.vaccine}</h4>
+                      <p className="text-xs text-muted-foreground">{vaccine.description}</p>
+                      <p className="text-sm text-muted-foreground">Due: {vaccine.dueDate}</p>
+                    </div>
+                  </div>
+                  <Badge 
+                    variant={
+                      vaccine.status === "completed" ? "secondary" : 
+                      vaccine.status === "overdue" ? "destructive" : 
+                      vaccine.status === "due" ? "default" : "outline"
+                    }
+                  >
+                    {vaccine.status === "completed" && <CheckCircle className="h-3 w-3 mr-1" />}
+                    {vaccine.status === "overdue" && <AlertCircle className="h-3 w-3 mr-1" />}
+                    {vaccine.status === "due" && <Clock className="h-3 w-3 mr-1" />}
+                    {vaccine.status}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+            <Button asChild variant="outline" className="w-full mt-4">
+              <Link to="/checkups">Schedule Vaccination</Link>
+            </Button>
+          </CardContent>
+        </Card>
+
         {/* Recent Test Reports */}
-        <Card className="health-card lg:col-span-2">
+        <Card className="health-card">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
               <Stethoscope className="h-5 w-5 text-primary" />

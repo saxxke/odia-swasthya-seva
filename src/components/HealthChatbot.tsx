@@ -88,13 +88,57 @@ export const HealthChatbot = () => {
   };
 
   const generateHealthResponse = (userInput: string): string => {
-    const responses = [
-      "Based on your symptoms, I suggest you consult with a doctor. Meanwhile, get adequate rest and stay hydrated.",
-      "For a healthy lifestyle, regular exercise, balanced diet, and adequate sleep are very important.",
-      "If you're experiencing any serious symptoms, please visit the nearest hospital immediately.",
-      "Regular health checkups are very important. Would you like to know more about our health checkup booking service?",
+    const input = userInput.toLowerCase();
+    
+    // Fever and cold symptoms
+    if (input.includes('fever') || input.includes('cold') || input.includes('cough') || input.includes('throat')) {
+      return "For fever and cold symptoms: Rest well, drink warm water, consume vitamin C rich foods like oranges. If fever exceeds 101°F or persists for more than 3 days, please consult a doctor immediately.";
+    }
+    
+    // Diabetes related
+    if (input.includes('diabetes') || input.includes('sugar') || input.includes('blood sugar')) {
+      return "For diabetes management: Monitor blood sugar regularly, follow a balanced diet with limited sugars, exercise daily for 30 minutes, take prescribed medications on time. Regular check-ups every 3 months are essential.";
+    }
+    
+    // Blood pressure
+    if (input.includes('pressure') || input.includes('bp') || input.includes('hypertension')) {
+      return "For blood pressure management: Reduce salt intake, exercise regularly, maintain healthy weight, avoid smoking and excessive alcohol. Monitor BP daily and take medications as prescribed. Emergency: If BP >180/120, seek immediate medical help.";
+    }
+    
+    // Vaccination
+    if (input.includes('vaccine') || input.includes('vaccination') || input.includes('immunization')) {
+      return "Vaccination is crucial for preventing diseases. Key vaccines for adults: COVID-19 (annual), Influenza (yearly), Hepatitis B, Tetanus booster (every 10 years). For children, follow the government's vaccination schedule strictly.";
+    }
+    
+    // Mental health
+    if (input.includes('mental') || input.includes('stress') || input.includes('anxiety') || input.includes('depression')) {
+      return "For mental health: Practice daily meditation, maintain regular sleep schedule, stay connected with family/friends, exercise regularly. If experiencing persistent sadness, anxiety, or thoughts of self-harm, please contact a mental health professional immediately.";
+    }
+    
+    // Nutrition
+    if (input.includes('nutrition') || input.includes('diet') || input.includes('food') || input.includes('eating')) {
+      return "For healthy nutrition: Eat balanced meals with vegetables, fruits, whole grains, and proteins. Drink 8-10 glasses of water daily. Avoid processed foods and excessive sugar. Include local foods like dal, rice, vegetables, and seasonal fruits in your diet.";
+    }
+    
+    // Exercise
+    if (input.includes('exercise') || input.includes('workout') || input.includes('physical')) {
+      return "For regular exercise: Start with 30 minutes daily walking, gradually add yoga or light exercises. Avoid intense workouts if you have heart conditions. Always warm up before exercising and cool down afterward.";
+    }
+    
+    // Skin conditions
+    if (input.includes('skin') || input.includes('rash') || input.includes('itching')) {
+      return "For skin conditions: Keep the affected area clean and dry, avoid scratching, use mild soaps, wear cotton clothing. For persistent rashes, itching, or unusual skin changes, consult a dermatologist.";
+    }
+    
+    // Default responses for general queries
+    const generalResponses = [
+      "I understand your concern. For accurate diagnosis and treatment, please consult with a qualified doctor. In the meantime, maintain a healthy lifestyle with proper diet, exercise, and adequate rest.",
+      "Your health is important. Based on your query, I recommend consulting a healthcare professional for proper guidance. You can book an appointment through our doctors section.",
+      "For any persistent or serious symptoms, please visit the nearest healthcare facility immediately. For general health maintenance, follow a balanced diet, regular exercise, and adequate sleep.",
+      "Thank you for your health query. While I can provide general guidance, it's always best to consult with a medical professional for personalized advice. Would you like me to help you find doctors in your area?",
     ];
-    return responses[Math.floor(Math.random() * responses.length)];
+    
+    return generalResponses[Math.floor(Math.random() * generalResponses.length)];
   };
 
   const handleVoiceInput = () => {
